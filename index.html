@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,27 +13,27 @@
       --accent: #4F8EF7;
       --accent-bright: #7EABFF;
       --accent-muted: #3A6FD8;
-      --accent-glow: rgba(79,142,247,0.10);
+      --accent-glow: rgba(79,142,247,0.15);
       --radius: 16px;
       --radius-sm: 10px;
       --transition: 0.35s cubic-bezier(.4,0,.2,1);
-      --bg: #FFFFFF;
-      --bg2: #F8FAFF;
-      --bg3: #EEF3FF;
-      --bg4: #DDE8FF;
-      --border: rgba(79,142,247,0.15);
-      --text: #1A1F36;
-      --text-muted: #5A6380;
-      --text-faint: #B0BEDC;
-      --card: rgba(255,255,255,0.95);
-      --nav-bg: rgba(255,255,255,0.92);
-      --glow-strong: rgba(79,142,247,0.10);
+      --bg: #000000;
+      --bg2: #050505;
+      --bg3: #111111;
+      --bg4: #1a1a1a;
+      --border: rgba(255,255,255,0.1);
+      --text: #ffffff;
+      --text-muted: #a0aabf;
+      --text-faint: #6b7280;
+      --card: rgba(15,15,15,0.95);
+      --nav-bg: rgba(0,0,0,0.92);
+      --glow-strong: rgba(79,142,247,0.15);
     }
 
     html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: #FFFFFF;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -88,7 +88,7 @@
 
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 99;
-      background: #ffffff;
+      background: var(--bg);
       flex-direction: column; align-items: center; justify-content: center; gap: 24px;
     }
     .mobile-menu.open { display: flex; }
@@ -137,7 +137,7 @@
     #hero {
       min-height: 100vh; display: flex; align-items: center;
       padding-top: 64px; position: relative; overflow: hidden;
-      background: linear-gradient(135deg, #FFFFFF 0%, #F0F6FF 50%, #E8F0FF 100%);
+      background: var(--bg);
     }
     .hero-orb {
       position: absolute; border-radius: 50%; filter: blur(80px);
@@ -179,17 +179,20 @@
     }
     @keyframes pulseRing { 0% { transform: scale(1); opacity:0.4; } 100% { transform: scale(2.5); opacity:0; } }
 
+    @keyframes colorFlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
     .hero-name {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.8rem, 5.5vw, 5rem);
       font-weight: 800; letter-spacing: -0.05em; line-height: 1;
-      color: var(--text); margin-bottom: 10px;
-      animation: fadeSlideUp 0.7s 0.1s ease both;
-    }
-    .hero-name .highlight {
+      margin-bottom: 10px;
       background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: fadeSlideUp 0.7s 0.1s ease both, colorFlow 10s linear infinite;
     }
     .hero-title {
       font-size: 1rem; font-weight: 400; color: var(--text-muted);
@@ -220,7 +223,7 @@
       padding: 14px 24px; border-radius: 12px;
       border: 1.5px solid var(--border); color: var(--text-muted);
       font-weight: 500; font-size: 0.9rem; text-decoration: none;
-      transition: all var(--transition); background: white;
+      transition: all var(--transition); background: var(--bg3);
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
@@ -237,7 +240,7 @@
     }
     .hero-avatar-wrap {
       width: 100%; height: 100%; border-radius: 28px;
-      background: linear-gradient(135deg, #EEF3FF, #DDE8FF);
+      background: var(--bg3);
       border: 2px solid rgba(79,142,247,0.20);
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
@@ -247,7 +250,7 @@
       width: 100%; height: 100%; object-fit: cover; border-radius: 26px;
     }
     .floating-chip {
-      position: absolute; background: white;
+      position: absolute; background: var(--bg3);
       border: 1px solid rgba(79,142,247,0.20); border-radius: 12px;
       padding: 10px 16px; font-size: 0.78rem; font-weight: 600;
       color: var(--text); white-space: nowrap;
@@ -267,7 +270,7 @@
     .hero-location svg { color: var(--accent); flex-shrink: 0; }
 
     /* ─── ABOUT ─── */
-    #about { background: #F8FAFF; }
+    #about { background: var(--bg2); }
     .about-grid {
       display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;
     }
@@ -276,7 +279,7 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
     .stat-card {
-      background: white; border: 1px solid rgba(79,142,247,0.15); border-radius: var(--radius);
+      background: var(--bg3); border: 1px solid rgba(79,142,247,0.15); border-radius: var(--radius);
       padding: 28px; text-align: center;
       transition: all var(--transition);
       box-shadow: 0 4px 16px rgba(79,142,247,0.06);
@@ -289,12 +292,12 @@
     .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
 
     /* ─── SKILLS ─── */
-    #skills { background: white; }
+    #skills { background: var(--bg3); }
     .skills-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px;
     }
     .skill-pill {
-      background: #F8FAFF; border: 1.5px solid rgba(79,142,247,0.15);
+      background: var(--bg2); border: 1.5px solid rgba(79,142,247,0.15);
       border-radius: var(--radius-sm); padding: 16px 14px;
       text-align: center; font-size: 0.85rem; font-weight: 600;
       color: var(--text);
@@ -309,12 +312,12 @@
     .skill-icon { font-size: 1.6rem; }
 
     /* ─── PROJECTS ─── */
-    #projects { background: #F8FAFF; }
+    #projects { background: var(--bg2); }
     .projects-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
     }
     .project-card {
-      background: white; border: 1.5px solid rgba(79,142,247,0.12);
+      background: var(--bg3); border: 1.5px solid rgba(79,142,247,0.12);
       border-radius: var(--radius); padding: 28px;
       transition: all var(--transition); display: flex; flex-direction: column;
       position: relative; overflow: hidden;
@@ -337,7 +340,7 @@
     .project-links { display: flex; gap: 10px; }
     .project-link {
       width: 36px; height: 36px; border-radius: 10px;
-      background: #F0F4FF; border: 1px solid rgba(79,142,247,0.15);
+      background: var(--bg3); border: 1px solid rgba(79,142,247,0.15);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
       transition: all var(--transition);
@@ -367,10 +370,10 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ─── EDUCATION ─── */
-    #education { background: white; }
+    #education { background: var(--bg3); }
     .edu-grid { display: flex; flex-direction: column; gap: 24px; max-width: 760px; }
     .edu-card {
-      background: #F8FAFF; border: 1.5px solid rgba(79,142,247,0.15);
+      background: var(--bg2); border: 1.5px solid rgba(79,142,247,0.15);
       border-radius: var(--radius); padding: 32px; 
       display: flex; align-items: flex-start; gap: 24px;
       transition: all var(--transition);
@@ -411,7 +414,7 @@
     .edu-score-icon { font-size: 0.95rem; }
 
     /* ─── CONTACT ─── */
-    #contact { background: #F8FAFF; }
+    #contact { background: var(--bg2); }
     .contact-wrapper {
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
     }
@@ -419,7 +422,7 @@
     .contact-links { display: flex; flex-direction: column; gap: 14px; }
     .contact-item {
       display: flex; align-items: center; gap: 16px;
-      background: white; border: 1.5px solid rgba(79,142,247,0.12);
+      background: var(--bg3); border: 1.5px solid rgba(79,142,247,0.12);
       border-radius: var(--radius-sm); padding: 16px 20px;
       text-decoration: none; color: var(--text);
       transition: all var(--transition);
@@ -438,7 +441,7 @@
     .form-group { display: flex; flex-direction: column; gap: 7px; }
     .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
     .form-group input, .form-group textarea {
-      background: white; border: 1.5px solid rgba(79,142,247,0.15);
+      background: var(--bg3); border: 1.5px solid rgba(79,142,247,0.15);
       border-radius: var(--radius-sm); padding: 14px 18px;
       color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
       transition: border-color var(--transition), box-shadow var(--transition);
@@ -458,7 +461,7 @@
 
     footer {
       border-top: 1px solid rgba(79,142,247,0.12); padding: 32px 0;
-      background: white;
+      background: var(--bg3);
     }
     .footer-inner {
       max-width: 1140px; margin: 0 auto; padding: 0 28px;
@@ -470,7 +473,7 @@
     .footer-socials { display: flex; gap: 12px; }
     .social-btn {
       width: 38px; height: 38px; border-radius: 10px;
-      background: #F0F4FF; border: 1px solid rgba(79,142,247,0.15);
+      background: var(--bg3); border: 1px solid rgba(79,142,247,0.15);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-muted); text-decoration: none; font-size: 1rem;
       transition: all var(--transition);
@@ -701,7 +704,7 @@
           <div class="edu-degree">MPC — Mathematics, Physics, Chemistry</div>
           <div class="edu-college">Kavitha Junior College</div>
           <div class="edu-location">Kodad, Telangana</div>
-          <div class="edu-score"><span class="edu-score-icon">📅</span>2021 – 2023</div>
+          <div class="edu-score"><span class="edu-score-icon">🏆</span>2021 – 2023</div>
         </div>
       </div>
 
@@ -711,9 +714,9 @@
         <div class="edu-content">
           <div class="edu-level">SSC — 10th Grade</div>
           <div class="edu-degree">Secondary School Certificate</div>
-          <div class="edu-college">ZP High School</div>
+          <div class="edu-college">ZPHS School</div>
           <div class="edu-location">Kodad, Suryapet</div>
-          <div class="edu-score"><span class="edu-score-icon">📅</span>2019 – 2021</div>
+          <div class="edu-score"><span class="edu-score-icon">🏆</span>2019 – 2021</div>
         </div>
       </div>
 
